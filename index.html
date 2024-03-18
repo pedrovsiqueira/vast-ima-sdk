@@ -1,0 +1,30 @@
+<html>
+   <head>
+      <title>IMA HTML5 Simple Demo</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+   </head>
+   <body>
+      <div id="vastTagInputContainer">
+         <a href="#" id="sampleVastTagLink">Click here to use a sample VAST tag URL</a>
+         <input id="vastTagUrl" type="text" placeholder="Enter VAST Tag URL">
+         <button id="loadAdButton">Load Ad</button>
+      </div>
+      <h2 id="videoPlayerTitle">Video Player</h2>
+      <div id="mainContainer">
+         <video id="contentElement" class="video-js vjs-default-skin" controls>
+            <source src="https://storage.googleapis.com/gvabox/media/samples/stock.mp4" type="video/mp4">
+            </source>
+         </video>
+         <div id="adContainer"></div>
+      </div>
+      <h2 id="logContainerTitle">Ad Log Container</h2>
+      <div id="logContainer">
+         <button id="clearLogButton" title="Delete log" style="float: right;">X</button>
+         <div id="logMessages"></div>
+      </div>
+      <script src="https://vjs.zencdn.net/7.11.4/video.js"></script>
+      <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+      <script type="module" src="main.js"></script>
+   </body>
+</html>
