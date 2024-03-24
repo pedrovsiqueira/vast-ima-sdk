@@ -25,6 +25,9 @@ function requestAds(vastTagUrl) {
 
     adsLoader.requestAds(adsRequest);
   } catch (error) {
+    if (error.message === "google is not defined") {
+      displayAdBlockMessage();
+    }
     console.error("Error requesting ads:", error);
     logToScreen(
       "Error requesting ads. Please check the console for more details."
@@ -59,7 +62,7 @@ function requestAdsAndSetUpListener(vastTagUrl) {
 }
 
 function setUpAdsManagerLoadedListener() {
-  adsLoader.addEventListener(
+  adsLoader?.addEventListener(
     google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
     () => playAds(),
     false
@@ -68,6 +71,10 @@ function setUpAdsManagerLoadedListener() {
 
 function displayError(error) {
   alert(error.message);
+}
+
+function displayAdBlockMessage() {
+  alert("Please disable your ad blocker to view the ad content.");
 }
 
 function playAds() {
