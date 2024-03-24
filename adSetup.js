@@ -25,9 +25,7 @@ function requestAds(vastTagUrl) {
 
     adsLoader.requestAds(adsRequest);
   } catch (error) {
-    if (error.message === "google is not defined") {
-      displayAdBlockMessage();
-    }
+    handleGoogleIsNotDefinedError(error);
     console.error("Error requesting ads:", error);
     logToScreen(
       "Error requesting ads. Please check the console for more details."
@@ -74,7 +72,15 @@ function displayError(error) {
 }
 
 function displayAdBlockMessage() {
-  alert("Please disable your ad blocker to view the ad content.");
+  alert(
+    "It seems like you're using an ad blocker. Please disable it to view ads."
+  );
+}
+
+function handleGoogleIsNotDefinedError(error) {
+  if (error.message === "google is not defined") {
+    displayAdBlockMessage();
+  }
 }
 
 function playAds() {
@@ -121,6 +127,7 @@ function createAdDisplayContainer() {
       videoContent
     );
   } catch (error) {
+    handleGoogleIsNotDefinedError(error);
     console.error("Error creating AdDisplayContainer:", error);
   }
 }
